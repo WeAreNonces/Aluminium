@@ -2,7 +2,7 @@
 #define ALM
 
 namespace alm {
-
+	void print(const char* str);
 }
 
-#endif
+#endif // ALM header guard

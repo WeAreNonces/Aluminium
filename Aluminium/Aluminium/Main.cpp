@@ -1,6 +1,6 @@
 #include <iostream>
-
+#include "Aluminium.h"
 int main()
 {
-    std::cout << "Hello World!";
+	alm::print("Hello, World! btw vi is a stinky fatty poop");
 }
