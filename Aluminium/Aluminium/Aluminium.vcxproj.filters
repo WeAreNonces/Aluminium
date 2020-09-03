@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Executable">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Aluminium">
+      <UniqueIdentifier>{3c0d8785-fb7b-44f6-bf9b-25a8cc906270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{798fa755-5f4d-4fcf-bef8-ef2af18518f1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Executable</Filter>
+    </ClCompile>
+    <ClCompile Include="Aluminium.cpp">
+      <Filter>Aluminium</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Aluminium.h">
+      <Filter>Aluminium</Filter>
+    </ClInclude>
+    <ClInclude Include="configparser.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
