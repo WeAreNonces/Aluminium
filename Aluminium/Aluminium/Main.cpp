@@ -2,5 +2,5 @@
 #include "Aluminium.h"
 int main()
 {
-    alm::print("hi vi is gay\n");
+    alm::print("Test 1234\n");
 }
