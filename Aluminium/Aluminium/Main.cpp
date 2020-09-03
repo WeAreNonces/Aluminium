@@ -2,5 +2,5 @@
 #include "Aluminium.h"
 int main()
 {
-    std::cout << "Hello World!";
+    alm::print("hi vi is gay\n");
 }
