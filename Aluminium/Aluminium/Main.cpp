@@ -2,6 +2,5 @@
 #include "Discord.h"
 
 int main() {
-	
 	return 0;
 }
