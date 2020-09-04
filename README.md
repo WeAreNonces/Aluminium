@@ -29,7 +29,6 @@ if you wish to build and compile this project yourself, Be sure to have these re
 
 - C++17 or later
 - cpr
-- Qt
 
 **IF YOU DO NOT HAVE ALL OF THE REQUIREMENTS FOR THIS PROJECT, IT WONT WORK PROPERLY**
 This client is only tested in Visual Studio 2019.
