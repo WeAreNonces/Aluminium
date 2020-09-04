@@ -1,7 +1,8 @@
 #include <iostream>
+#include <string>
 #include "Discord.h"
 
 int main() {
-	std::cout << discord::getmessagestest();
+	
 	return 0;
 }
