@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Aluminium.cpp" />
+    <ClCompile Include="configparser.cpp" />
     <ClCompile Include="Discord.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -154,6 +155,7 @@
     <ClInclude Include="Aluminium.h" />
     <ClInclude Include="configparser.h" />
     <ClInclude Include="Discord.h" />
+    <ClInclude Include="functions.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

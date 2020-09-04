@@ -25,6 +25,9 @@
     <ClCompile Include="Discord.cpp">
       <Filter>Aluminium\Discord</Filter>
     </ClCompile>
+    <ClCompile Include="configparser.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aluminium.h">
@@ -35,6 +38,9 @@
     </ClInclude>
     <ClInclude Include="Discord.h">
       <Filter>Aluminium\Discord</Filter>
+    </ClInclude>
+    <ClInclude Include="functions.hpp">
+      <Filter>Aluminium</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

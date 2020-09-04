@@ -1,18 +1,5 @@
 #include <iostream>
 #include "Discord.h"
-#include "Aluminium.h"
-#include <fstream>
-#include <vector>
-#include <Windows.h>
-#include <tuple>
-/*
-	Exit Codes:
-	0 - Success
-	1 - Unknown error
-	2 - Failed to open tokens
-*/
-
-// returns a string with all of the tokens the user gave us
 
 int main() {
 	auto [tokens, count] = alm::getTokens("tokens.txt");

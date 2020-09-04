@@ -64,9 +64,8 @@ int discord::Account::sendFriendRequest(std::string name) {
         cpr::Body{ "{\"username\": \"" + n[0] + "\", \"discriminator\": " + n[1] + " }" });
     switch (r.status_code) {
     case 200:
-        return 200;
     case 204:
-        return 204;
+        return 200;
     case 400:
         throw "Bad Request";
     case 401:
@@ -78,6 +77,7 @@ int discord::Account::sendFriendRequest(std::string name) {
     }
 }
 
+// Verifies if the token is valid
 bool discord::Account::verifyToken() {
     std::string url = "https://discordapp.com/api/v8/users/@me";
     cpr::Response r = cpr::Get(cpr::Url{ url },
