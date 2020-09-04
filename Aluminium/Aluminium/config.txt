@@ -1,5 +1,14 @@
-# This is a comment
-# This is another comment.
-# Above me is empty space
-testvalue = hi
-anothervalue = xDDD
+# Aluminium's Configuration file.
+
+# Thread level is the level of processes Aluminium can start
+# The higher the level the faster Aluminium becomes (more computer resources are used)
+# Maximum thread level is 3, best kept at 2.
+thread_level = 2
+
+# If set to a value, the nicknames of the tokens will be changed when raiding a server.
+# Leave at `false` to keep the names as they are.
+nickname = false
+
+# If set to true, the tokens will ping @everyone in the beginning of the messages
+# This will only work if the server allows it.
+ping_everyone = false
