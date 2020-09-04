@@ -11,13 +11,19 @@
     <Filter Include="Config">
       <UniqueIdentifier>{798fa755-5f4d-4fcf-bef8-ef2af18518f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Aluminium\Discord">
+      <UniqueIdentifier>{088d2897-23f0-445f-929b-fb8237744296}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Executable</Filter>
-    </ClCompile>
     <ClCompile Include="Aluminium.cpp">
       <Filter>Aluminium</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Executable</Filter>
+    </ClCompile>
+    <ClCompile Include="Discord.cpp">
+      <Filter>Aluminium\Discord</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -26,6 +32,9 @@
     </ClInclude>
     <ClInclude Include="configparser.h">
       <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Discord.h">
+      <Filter>Aluminium\Discord</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

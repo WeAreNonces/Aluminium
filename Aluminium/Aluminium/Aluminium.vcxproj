@@ -80,6 +80,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\marke\source\repos\WeAreNonces\Aluminium\Aluminium\Aluminium\Dependencies\cpr\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\marke\source\repos\WeAreNonces\Aluminium\Aluminium\Aluminium\Dependencies\cpr\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -144,11 +146,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Aluminium.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Discord.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aluminium.h" />
     <ClInclude Include="configparser.h" />
+    <ClInclude Include="Discord.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
