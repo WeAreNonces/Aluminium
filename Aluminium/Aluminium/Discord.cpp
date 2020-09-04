@@ -4,6 +4,7 @@
 #include <math.h>
 #include "cpr/cpr.h"
 #include "Discord.h"
+#include "Aluminium.h"
 
 // Functions
 
@@ -19,21 +20,6 @@ inline const std::string const BoolToString(bool b)
     return b ? "true" : "false";
 }
 
-std::vector<std::string> split(std::string str, char separator) {
-    std::vector<std::string> sp = {};
-    std::string buffer = "";
-    for (int i = 0; i < str.size(); i++) {
-        if (str[i] == separator) {
-            sp.push_back(buffer);
-            buffer = "";
-            continue;
-        }
-        buffer += str[i];
-    }
-    if (buffer != "")
-        sp.push_back(buffer);
-    return sp;
-}
 
 // Account class
 
@@ -70,7 +56,7 @@ int discord::Account::changenick(std::uint64_t guildId, std::string newName) {
 // Sends a friend request to a user
 // Example: Account::sendFriendRequest("vi#0049");
 int discord::Account::sendFriendRequest(std::string name) {
-    std::vector<std::string> n = split(name, '#');
+    std::vector<std::string> n = alm::split(name, '#');
     n[1] = std::to_string(std::stoi(n[1])); // flushop
     std::string url = "https://discordapp.com/api/v8/users/@me/relationships";
     cpr::Response r = cpr::Post(cpr::Url{ url },
