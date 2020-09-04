@@ -4,7 +4,7 @@
 #include <iostream>
 
 std::string discord::getmessagestest() {
-    cpr::Response r = cpr::Get(cpr::Url{ "https://discord.com/api/v8/channels/730838880260980908/messages?limit=50" });
-   
+    cpr::Response r = cpr::Get(cpr::Url{ "https://discord.com/api/v8/channels/730838880260980908/messages?limit=50" }, 
+        cpr::Header{ {"Authorization","-"} });
     return r.text;
 }
