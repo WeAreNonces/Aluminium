@@ -39,5 +39,8 @@
     <ClInclude Include="Discord.h">
       <Filter>Aluminium\Discord</Filter>
     </ClInclude>
+    <ClInclude Include="functions.hpp">
+      <Filter>Aluminium</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
