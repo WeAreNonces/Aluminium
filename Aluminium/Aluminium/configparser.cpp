@@ -29,8 +29,8 @@ bool isdigit(std::string s) {
 // Parses the file
 // Possible errors:
 // "OP_CONFIG_OPEN_FAILURE" -> Configuration file not found or failed to open
-config::parser config::parse(std::string filename) {
-    config::parser f = {};
+config::Parser config::parse(std::string filename) {
+    config::Parser f = {};
 	std::ifstream config{"config.txt"};
 	if (!config)
 		throw "OP_CONFIG_OPEN_FAILURE";
@@ -48,7 +48,7 @@ config::parser config::parse(std::string filename) {
     return f;
 }
 
-config::ParseValue config::get(config::parser ParseObject, std::string key) {
+config::ParseValue config::get(config::Parser ParseObject, std::string key) {
     try {
         ParseObject.at(key);
     }
