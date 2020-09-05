@@ -7,28 +7,27 @@ Discord Raid Client in C++
 
 # Features
 
-- Change the bot's Profile Picture
-- Change the bot's Nicknames
+- Modify the bot's profile picture
+- Change the bot's nicknames
 - Friend request spammer
 - DM spammer
-- Server spammer
+- Server raider
 - Reaction spammer (also works for servers that use reactions as a verification method)
-- Fully open source, so you dont have to worry about us installing 400 adwares with the botter too
+- Fully open source, so you can compile it yourself.
 
 
+# Releases
 
-# Latest release
+You can find the latest release [here](https://github.com/WeAreNonces/Aluminium/releases).
 
-go [here](https://github.com/WeAreNonces/Aluminium/releases) to get the latest release
+# Tokens
 
-
+Aluminium does not provide tokens for raiding, you can place all your tokens in tokens.txt (Aluminium validates each one and will tell you if a token no longer works or isn't valid).
 
 # Requirements
-if you wish to build and compile this project yourself, Be sure to have these requirements first:
-
+if you wish to compile this project yourself, be sure to have these requirements first:
 
 - C++17 or later
-- cpr
+- [cpr](https://github.com/whoshuu/cpr)
 
-**IF YOU DO NOT HAVE ALL OF THE REQUIREMENTS FOR THIS PROJECT, IT WONT WORK PROPERLY**
-This client is only tested in Visual Studio 2019.
+**Above is required to work**  
