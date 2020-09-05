@@ -16,7 +16,7 @@ namespace discord {
 		}
 
 		int send(std::uint64_t channelId, std::string content, bool tts = false);
-		int joinserver(std::string invite);
+		std::uint64_t joinserver(std::string invite);
 		int changenick(std::uint64_t guildId, std::string newNickname);
 		int sendFriendRequest(std::string name);
 		bool verifyToken();

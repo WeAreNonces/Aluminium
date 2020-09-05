@@ -5,13 +5,15 @@
 #include "cpr/cpr.h"
 #include "Discord.h"
 #include "Aluminium.h"
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
 
 // Functions
 
 int getRandomNumber(int min, int max)
 {
-    static constexpr double fraction{ 1.0 / (RAND_MAX + 1.0) };  // static used for efficiency, so we only calculate this value once
-    // evenly distribute the random number across our range
+    static constexpr double fraction{ 1.0 / (RAND_MAX + 1.0) };
     return min + static_cast<int>((max - min + 1) * (std::rand() * fraction));
 }
 
@@ -36,12 +38,20 @@ int discord::Account::send(std::uint64_t channelId, std::string content, bool tt
 }
 
 // Joins the server from the invite
-int discord::Account::joinserver(std::string invite) {
+// Returns unsigned int 64.
+std::uint64_t discord::Account::joinserver(std::string invite) {
     std::string url = "https://discord.com/api/v8/invites/" + invite;
     cpr::Response r = cpr::Post(cpr::Url{ url },
         cpr::Payload{ {"inputValue", invite}, {"with_counts", true} },
         cpr::Header{ {"authorization", this->m_token}, {"content-type", "application/json"} });
-    return r.status_code;
+    if (r.status_code == 200 || r.status_code == 204) {
+        rapidjson::Document doc;
+        doc.Parse(r.text.c_str());
+        rapidjson::Value& id = doc["guild"]["id"];
+        return std::stoull(id.GetString());
+    }
+    else
+        throw "JOIN_FAILURE";
 }
 
 // Changes the account's nickname

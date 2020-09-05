@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
+#ifndef ALM
+#define ALM
 namespace alm {
 	
 	int getThreadCount(int tokens);
