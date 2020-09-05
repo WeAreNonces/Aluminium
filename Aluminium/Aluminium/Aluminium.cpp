@@ -7,7 +7,7 @@
 #include <tuple>
 
 // Returns the amount of threads needed
-int alm::ReturnThreads(int tokens) {
+int alm::getThreadCount(int tokens) {
 	return tokens * 85 / 100;
 }
 
@@ -50,7 +50,9 @@ std::tuple<std::vector<std::string>, int> alm::getTokens(std::string filepath) {
 	while (tokens) {
 		tokens >> line;
 		file.push_back(line);
+		std::cout << "a " << count << '\n';
 		count++;
+		std::cout << "b " << count << '\n';
 	}
 	return std::make_tuple(file, count);
 }
