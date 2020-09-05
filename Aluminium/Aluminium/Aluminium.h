@@ -6,10 +6,9 @@
 namespace alm {
 	
 	int getThreadCount(int tokens);
-	void Raid(uint64_t channelId, std::string message);
+	void ServerRaid(uint64_t channelId, std::string message);
 	std::vector<std::string> split(std::string str, char separator);
-	
-	std::tuple<std::vector<std::string>, int> getTokens(std::string filepath);
+	std::vector<std::string> getTokens(std::string filepath);
 }
 
 #endif

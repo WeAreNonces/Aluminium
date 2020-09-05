@@ -8,11 +8,12 @@
 
 // Returns the amount of threads needed
 int alm::getThreadCount(int tokens) {
-	return tokens * 85 / 100;
+	int c = tokens * 75 / 100;
+    return c == 0 ? 1 : c;
 }
 
 // Well.. It's obvious what this does or atleast I hope so
-void alm::Raid(uint64_t channelId,std::string message) {
+void alm::ServerRaid(uint64_t channelId,std::string message) {
 	discord::Account asd{"test"};
 	asd.send(channelId, message);
 }
@@ -35,24 +36,17 @@ std::vector<std::string> alm::split(std::string str, char separator) {
 
 
 // returns a string with all of the tokens the user gave us
-std::tuple<std::vector<std::string>, int> alm::getTokens(std::string filepath) {
-	std::ifstream tokens{ filepath };
-
-	// if we fail to open the file, throw an error and exit early
-	if (!tokens) {
-		std::cout << "[ Aluminium ] Error opening tokens.";
-		std::exit(2);
-	}
-	// Read all of the contents in the file, I will regret writting this later
-	std::vector<std::string> file = {};
-	std::string line;
-	int count = 0;
-	while (tokens) {
-		tokens >> line;
-		file.push_back(line);
-		std::cout << "a " << count << '\n';
-		count++;
-		std::cout << "b " << count << '\n';
-	}
-	return std::make_tuple(file, count);
+std::vector<std::string> alm::getTokens(std::string filepath) {
+    std::vector<std::string> tokens = {};
+    std::ifstream config{ filepath };
+    if (!config)
+        throw "OPEN_FAILURE";
+    while (config) {
+        std::string line;
+        std::getline(config, line);
+        if (line[0] == '#' || line.size() == 0)
+            continue;
+        tokens.push_back(line);
+    }
+    return tokens;
 }
