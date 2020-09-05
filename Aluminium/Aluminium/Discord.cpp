@@ -7,7 +7,6 @@
 #include "Aluminium.h"
 #include "rapidjson/document.h"
 #include "rapidjson/writer.h"
-#include "rapidjson/stringbuffer.h"
 
 // Functions
 
@@ -52,6 +51,23 @@ std::uint64_t discord::Account::joinserver(std::string invite) {
     }
     else
         throw "JOIN_FAILURE";
+}
+
+// Leaves the server
+void discord::Account::leaveserver(std::uint64_t guildId) {
+    std::string url = "https://discord.com/api/v8/users/@me/guilds/" + std::to_string(guildId);
+    cpr::Response r = cpr::Delete(cpr::Url{ url },
+        cpr::Header{ {"authorization", this->m_token}, {"content-type", "application/json"} });
+    switch (r.status_code) {
+    case 403:
+        throw "ERROR_FORBIDDEN";
+    case 400:
+        throw "ERROR_BADREQUEST";
+    case 401:
+        throw "ERROR_UNAUTHORIZED";
+    case 405:
+        throw "ERROR_NOTALLOWED";
+    }
 }
 
 // Changes the account's nickname
