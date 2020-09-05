@@ -4,9 +4,8 @@
 #include <vector>
 #include <map>
 #include <cctype>
+#include "Aluminium.h"
 
-// Forward declaring split function from Discord.cpp
-std::vector<std::string> split(std::string str, char separator);
 
 std::string strip(std::string s) {
     while (s.front() == ' ' || s.back() == ' ') {
@@ -39,7 +38,7 @@ config::Parser config::parse(std::string filename) {
         std::getline(config, line);
 		if (line[0] == '#')
 			continue;
-        std::vector<std::string> s = split(line, '=');
+        std::vector<std::string> s = alm::split(line, '=');
         if (s.size() == 2)
             f[strip(s[0])] = strip(s[1]);
         else
