@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
+
 namespace alm {
 	int ReturnThreads(int tokens);
 	void Raid(uint64_t channelId, std::string message);

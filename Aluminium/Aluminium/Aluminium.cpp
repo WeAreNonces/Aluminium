@@ -1,6 +1,6 @@
-#include <thread>
 #include "Aluminium.h"
 #include "Discord.h"
+#include <thread>
 #include <string>
 #include <vector>
 #include <fstream>
