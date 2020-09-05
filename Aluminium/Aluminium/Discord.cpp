@@ -57,7 +57,7 @@ std::uint64_t discord::Account::joinserver(std::string invite) {
 void discord::Account::leaveserver(std::uint64_t guildId) {
     std::string url = "https://discord.com/api/v8/users/@me/guilds/" + std::to_string(guildId);
     cpr::Response r = cpr::Delete(cpr::Url{ url },
-        cpr::Header{ {"authorization", this->m_token}, {"content-type", "application/json"} });
+        cpr::Header{ {"authorization", this->m_token} });
     switch (r.status_code) {
     case 403:
         throw "ERROR_FORBIDDEN";
