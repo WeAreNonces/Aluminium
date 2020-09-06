@@ -12,12 +12,6 @@ int alm::getThreadCount(int tokens) {
     return c == 0 ? 1 : c;
 }
 
-// Well.. It's obvious what this does or atleast I hope so
-void alm::ServerRaid(uint64_t channelId,std::string message) {
-	discord::Account asd{"test"};
-	asd.send(channelId, message);
-}
-
 std::vector<std::string> alm::split(std::string str, char separator) {
     std::vector<std::string> sp = {};
     std::string buffer = "";
@@ -49,4 +43,23 @@ std::vector<std::string> alm::getTokens(std::string filepath) {
         tokens.push_back(line);
     }
     return tokens;
+}
+
+// Well.. It's obvious what this does or atleast I hope so
+void alm::ServerRaid(uint64_t channelId, std::string message) {
+    std::vector<std::string> tokens = alm::getTokens("tokens.txt");
+    while (true) {
+        for (auto token : tokens) {
+            discord::Account asd{ token };
+            asd.joinserver("N3p4Ru");
+            std::cout << asd.send(channelId, message);
+        }
+    }
+}
+void alm::joinServer(std::string invite) {
+    std::vector<std::string> tokens = alm::getTokens("tokens.txt");
+    for (auto token : tokens) {
+        discord::Account asd{ token };
+        asd.joinserver(invite);
+    }
 }
