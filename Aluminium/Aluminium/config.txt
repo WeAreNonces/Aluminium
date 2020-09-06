@@ -11,7 +11,7 @@ ping_everyone = false
 # Verifies if the tokens are functional and valid when the program starts
 # If an invalid token is found, it's removed from the list and tells you which token is invalid.
 # We recommend keeping this at true, but if you have a lot of tokens and you're sure they're functional, you're welcome to keep this at false.
-verify_tokens = true
+verify_tokens = false
 
 # This is the amount of time it waits between message (in milliseconds)
 # By default this is at `250`, but if you have a low amount of tokens we recommend making this higher.
