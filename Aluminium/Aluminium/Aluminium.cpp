@@ -75,6 +75,18 @@ void alm::joinServer(std::string invite) {
     }
 }
 
+// TODO: Make it async
+void alm::spamFriendRequests(std::string user) {
+    std::vector<std::string> tokens = alm::getTokens("tokens.txt");
+    std::vector<std::future<void>> futures = {};
+    for (auto x : tokens) {
+        try {
+            discord::Account acc = { x };
+            acc.sendFriendRequest(user);
+        } catch(...) {}
+    }
+}
+
 // Well.. It's obvious what this does or atleast I hope so
 void alm::ServerRaid(uint64_t channelId, std::string message) {
     std::vector<std::string> tokens = alm::getTokens("tokens.txt");

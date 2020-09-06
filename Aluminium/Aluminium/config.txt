@@ -17,4 +17,4 @@ verify_tokens = false
 # By default this is at `250`, but if you have a low amount of tokens we recommend making this higher.
 # If you have a lot of tokens (above 100) then we recommend making this lower.
 # If you notice the bot stops sending messages after a while then make this higher.
-time_between_message = 250
+time_between_message = 135

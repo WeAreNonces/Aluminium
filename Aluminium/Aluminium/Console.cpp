@@ -11,8 +11,9 @@
     LIGHT GREEN 10, LIGHT CYAN 11, LIGHT RED 12,
     LIGHT MAGENTA 13, YELLOW 14, WHITE 15,
 */
+
 template<typename T>
-void console::print(T msg,bool warn) {
+void console::print(T msg, bool warn) {
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     if (warn) {
         SetConsoleTextAttribute(h, FOREGROUND_RED | FOREGROUND_GREEN);
@@ -61,7 +62,7 @@ void console::ParseCmds(std::string cmd, std::vector<std::string> tokens) {
 
     else if (args[0] == "spamfriendrequests" || args[0] == "spamfrs") {
         if (args.size() == 2) {
-            console::print("Sorry. This command hasent been implemented yet.\n");
+            alm::spamFriendRequests(args[1]);
         }
         else
             console::print("sendfriendrequests [userid] - Makes the bots join a server\n");

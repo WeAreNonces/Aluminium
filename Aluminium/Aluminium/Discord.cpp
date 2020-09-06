@@ -99,6 +99,7 @@ void discord::Account::leaveserver(std::uint64_t guildId) {
 }
 
 // Changes the account's nickname
+// TODO: make async
 int discord::Account::changenick(std::uint64_t guildId, std::string newName) {
     std::string url = "https://discord.com/api/v8/guilds/" + std::to_string(guildId) + "/members/@me/nick";
     cpr::Response r = cpr::Patch(cpr::Url{ url },
@@ -132,6 +133,7 @@ int discord::Account::sendFriendRequest(std::string name) {
 }
 
 // Verifies if the token is valid
+// TODO: make async
 bool discord::Account::verifyToken() {
     std::string url = "https://discordapp.com/api/v8/users/@me";
     cpr::Response r = cpr::Get(cpr::Url{ url },
