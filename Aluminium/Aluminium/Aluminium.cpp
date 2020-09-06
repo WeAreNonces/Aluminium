@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <tuple>
+#include <Windows.h>
 
 // Returns the amount of threads needed
 int alm::getThreadCount(int tokens) {
@@ -61,5 +62,65 @@ void alm::joinServer(std::string invite) {
     for (auto token : tokens) {
         discord::Account asd{ token };
         asd.joinserver(invite);
+    }
+}
+template<typename T>
+void alm::print(T msg) {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(h, 4);
+    std::cout << "[ ALUMINUM ] ";
+    SetConsoleTextAttribute(h, 15);
+    std::cout << msg;
+}
+
+void alm::ParseCmds(std::string cmd) {
+
+    std::vector<std::string> args = alm::split(cmd, ' ');
+
+    if (args[0] == "help") {
+        alm::print("Here are the commands available: ");
+        std::cout << R"(   
+        help - prints out this message
+        join [invite] - makes the bots join a server
+        config - Opens up config.txt
+        tokens - Opens up tokens.txt
+        raid [channelid] - spams messages to a channel
+        leave [guildid] - Leaves a server
+        sendfriendrequest [userid] - Sends a friend request to a user
+)";
+    }
+
+    else if (args[0] == "join") {
+        if (args.size() == 2) {
+            // ur code goes here, vi
+        }
+        else {
+            alm::print("join [invite] - Makes the bots join a server\n");
+        }
+    }
+
+    else if (args[0] == "sendfriendrequest" || args[0] == "spamfr") {
+        if (args.size() == 2) {
+            // ur code goes here, vi
+        }
+        else {
+            alm::print("sendfriendrequest [userid] - Makes the bots join a server\n");
+        }
+    }
+
+    else if (args[0] == "raid") {
+        if (args.size() == 2) {
+            // ur code goes here, vi
+        }
+        else {
+            alm::print("raid [channelid] - Makes the bots join a server\n");
+        }
+    }
+
+    else if (args[0] == "config") {
+        system("start config.txt");
+    }
+    else if (args[0] == "tokens") {
+        system("start tokens.txt");
     }
 }
