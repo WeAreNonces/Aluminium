@@ -10,9 +10,6 @@ namespace alm {
 	std::vector<std::string> split(std::string str, char separator);
 	std::vector<std::string> getTokens(std::string filepath);
 	void joinServer(std::string invite);
-	void ParseCmds(std::string cmd);
-	template<typename T>
-	void print(T msg);
 }
 
 #endif

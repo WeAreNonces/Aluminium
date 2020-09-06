@@ -149,12 +149,14 @@
   <ItemGroup>
     <ClCompile Include="Aluminium.cpp" />
     <ClCompile Include="configparser.cpp" />
+    <ClCompile Include="Console.cpp" />
     <ClCompile Include="Discord.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aluminium.h" />
     <ClInclude Include="configparser.h" />
+    <ClInclude Include="Console.h" />
     <ClInclude Include="Discord.h" />
     <ClInclude Include="functions.hpp" />
   </ItemGroup>

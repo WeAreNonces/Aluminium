@@ -1,11 +1,12 @@
 #include "Aluminium.h"
 #include "Discord.h"
-#include <thread>
-#include <string>
+#include "Console.h"
+#include <string> // for std::getline
 #include <vector>
-#include <fstream>
-#include <tuple>
+#include <fstream> // for std::ifstream
 #include <Windows.h>
+#include <future>
+#include <cpr/cpr.h>
 
 // Returns the amount of threads needed
 int alm::getThreadCount(int tokens) {
@@ -46,80 +47,39 @@ std::vector<std::string> alm::getTokens(std::string filepath) {
     return tokens;
 }
 
+// For async
+// TODO: move to lambda
+static void joinserver(discord::Account account, std::string invite) {
+    account.asyncJoinServer(invite);
+}
+
+// For async
+// TODO: move to lambda
+static void sendmessage(discord::Account account, std::uint64_t channelId, std::string content) {
+    account.asyncSend(channelId, content);
+}
+
+// Makes all tokens join servers
+// TODO: std::filesystem to check if tokens.txt exists
+void alm::joinServer(std::string invite) {
+    std::vector<std::string> tokens = alm::getTokens("tokens.txt");
+    std::vector<std::future<void>> futures = {};
+    for (auto x : tokens) {
+        discord::Account acc = {x};
+        futures.push_back(std::async(std::launch::async, joinserver, acc, invite));
+        std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    }
+}
+
 // Well.. It's obvious what this does or atleast I hope so
 void alm::ServerRaid(uint64_t channelId, std::string message) {
     std::vector<std::string> tokens = alm::getTokens("tokens.txt");
+    std::vector<std::future<void>> futures = {};
     while (true) {
         for (auto token : tokens) {
-            discord::Account Token{ token };
-            Token.send(channelId, message);
+            discord::Account account{ token };
+            futures.push_back(std::async(std::launch::async, sendmessage, account, channelId, message));
+            std::this_thread::sleep_for(std::chrono::milliseconds(250));
         }
-    }
-}
-void alm::joinServer(std::string invite) {
-    std::vector<std::string> tokens = alm::getTokens("tokens.txt");
-    for (auto token : tokens) {
-        discord::Account asd{ token };
-        asd.joinserver(invite);
-    }
-}
-template<typename T>
-void alm::print(T msg) {
-    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(h, 4);
-    std::cout << "[ ALUMINUM ] ";
-    SetConsoleTextAttribute(h, 15);
-    std::cout << msg;
-}
-
-void alm::ParseCmds(std::string cmd) {
-
-    std::vector<std::string> args = alm::split(cmd, ' ');
-
-    if (args[0] == "help") {
-        alm::print("Here are the commands available: ");
-        std::cout << R"(   
-        help - prints out this message
-        join [invite] - makes the bots join a server
-        config - Opens up config.txt
-        tokens - Opens up tokens.txt
-        raid [channelid] - spams messages to a channel
-        leave [guildid] - Leaves a server
-        sendfriendrequest [userid] - Sends a friend request to a user
-)";
-    }
-
-    else if (args[0] == "join") {
-        if (args.size() == 2) {
-            // ur code goes here, vi
-        }
-        else {
-            alm::print("join [invite] - Makes the bots join a server\n");
-        }
-    }
-
-    else if (args[0] == "sendfriendrequest" || args[0] == "spamfr") {
-        if (args.size() == 2) {
-            // ur code goes here, vi
-        }
-        else {
-            alm::print("sendfriendrequest [userid] - Makes the bots join a server\n");
-        }
-    }
-
-    else if (args[0] == "raid") {
-        if (args.size() == 2) {
-            // ur code goes here, vi
-        }
-        else {
-            alm::print("raid [channelid] - Makes the bots join a server\n");
-        }
-    }
-
-    else if (args[0] == "config") {
-        system("start config.txt");
-    }
-    else if (args[0] == "tokens") {
-        system("start tokens.txt");
     }
 }

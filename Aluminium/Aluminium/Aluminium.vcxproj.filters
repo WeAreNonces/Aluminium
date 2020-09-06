@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Executable">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Aluminium">
       <UniqueIdentifier>{3c0d8785-fb7b-44f6-bf9b-25a8cc906270}</UniqueIdentifier>
     </Filter>
@@ -14,19 +10,29 @@
     <Filter Include="Aluminium\Discord">
       <UniqueIdentifier>{088d2897-23f0-445f-929b-fb8237744296}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Aluminium\Console">
+      <UniqueIdentifier>{f7e0f295-f3ca-4cfc-bf7b-525bef2289d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aluminium.cpp">
       <Filter>Aluminium</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Executable</Filter>
+      <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="Discord.cpp">
       <Filter>Aluminium\Discord</Filter>
     </ClCompile>
     <ClCompile Include="configparser.cpp">
       <Filter>Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>Aluminium\Console</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="functions.hpp">
       <Filter>Aluminium</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Aluminium\Console</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

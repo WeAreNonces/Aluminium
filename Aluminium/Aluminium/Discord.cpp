@@ -36,6 +36,17 @@ int discord::Account::send(std::uint64_t channelId, std::string content, bool tt
     return r.status_code;
 }
 
+// Sends a message asynchronously
+int discord::Account::asyncSend(std::uint64_t channelId, std::string content, bool tts) {
+    std::string url = "https://discord.com/api/v8/channels/" + std::to_string(channelId) + "/messages";
+    std::future<cpr::Response> future;
+    future = cpr::PostAsync(cpr::Url{ url },
+        cpr::Header{ {"authorization", this->m_token}, {"content-type", "application/json"} },
+        cpr::Body{ "{\"content\": \"" + content + "\", \"nonce\": " + std::to_string(getRandomNumber(99999999, 999999999)) + ", \"tts\": " + BoolToString(tts) + "}" });
+    cpr::Response r = future.get();
+    return r.status_code;
+}
+
 // Joins the server from the invite
 // Returns unsigned int 64.
 std::uint64_t discord::Account::joinserver(std::string invite) {
@@ -48,6 +59,23 @@ std::uint64_t discord::Account::joinserver(std::string invite) {
         doc.Parse(r.text.c_str());
         rapidjson::Value& id = doc["guild"]["id"];
         return std::stoull(id.GetString());
+    }
+    else
+        throw "JOIN_FAILURE";
+}
+
+// async
+std::uint64_t discord::Account::asyncJoinServer(std::string invite) {
+    std::string url = "https://discord.com/api/v8/invites/" + invite;
+    std::future<cpr::Response> future;
+    future = cpr::PostAsync(cpr::Url{ url },
+        cpr::Payload{ {"inputValue", invite}, {"with_counts", true} },
+        cpr::Header{ {"authorization", this->m_token}, {"content-type", "application/json"} });
+    cpr::Response r = future.get();
+    if (r.status_code == 200 || r.status_code == 204) {
+        rapidjson::Document doc;
+        doc.Parse(r.text.c_str());
+        rapidjson::Value& id = doc["guild"]["id"];
     }
     else
         throw "JOIN_FAILURE";
