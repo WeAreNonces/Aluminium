@@ -8,7 +8,7 @@
 
 // Returns the amount of threads needed
 int alm::getThreadCount(int tokens) {
-	int c = tokens * 75 / 100;
+	int c = tokens * 65 / 100;
     return c == 0 ? 1 : c;
 }
 
@@ -50,9 +50,8 @@ void alm::ServerRaid(uint64_t channelId, std::string message) {
     std::vector<std::string> tokens = alm::getTokens("tokens.txt");
     while (true) {
         for (auto token : tokens) {
-            discord::Account asd{ token };
-            asd.joinserver("N3p4Ru");
-            std::cout << asd.send(channelId, message);
+            discord::Account Token{ token };
+            Token.send(channelId, message);
         }
     }
 }

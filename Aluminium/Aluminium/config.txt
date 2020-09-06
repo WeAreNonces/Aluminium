@@ -1,14 +1,18 @@
 # Aluminium's Configuration file.
 
-# Thread level is the level of processes Aluminium can start
-# The higher the level the faster Aluminium becomes (more computer resources are used)
-# Maximum thread level is 3, best kept at 2.
-thread_level = 2
-
 # If set to a value, the nicknames of the tokens will be changed when raiding a server.
-# Leave at `false` to keep the names as they are.
-nickname = false
+# Leave at `none` to keep the names as they are.
+nickname = none
 
 # If set to true, the tokens will ping @everyone in the beginning of the messages
 # This will only work if the server allows it.
 ping_everyone = false
+
+# Verifies if the tokens are functional and valid when the program starts
+# If an invalid token is found, it's removed from the list and tells you which token is invalid.
+# We recommend keeping this at true, but if you have a lot of tokens and you're sure they're functional, you're welcome to keep this at false.
+verify_tokens = true
+
+# Aluminium uses multithreading to make the bot as fast as possible. Which is why we heavily recommend keeping this at true.
+# However if your computer resources are very bad, you can keep this at false.
+threading = true
