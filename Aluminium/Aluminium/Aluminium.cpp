@@ -1,6 +1,7 @@
 #include "Aluminium.h"
 #include "Discord.h"
 #include "Console.h"
+#include "configparser.h"
 #include <string> // for std::getline
 #include <vector>
 #include <fstream> // for std::ifstream
@@ -56,6 +57,9 @@ static void joinserver(discord::Account account, std::string invite) {
 // For async
 // TODO: move to lambda
 static void sendmessage(discord::Account account, std::uint64_t channelId, std::string content) {
+    config::Parser configuration = config::parse("config.txt");
+    if (std::get<bool>(config::get(configuration, "ping_everyone")))
+        content = "@everyone " + content;
     account.asyncSend(channelId, content);
 }
 
@@ -75,11 +79,13 @@ void alm::joinServer(std::string invite) {
 void alm::ServerRaid(uint64_t channelId, std::string message) {
     std::vector<std::string> tokens = alm::getTokens("tokens.txt");
     std::vector<std::future<void>> futures = {};
+    config::Parser configuration = config::parse("config.txt");
+    int time_between_message = std::get<int>(config::get(configuration, "time_between_message"));
     while (true) {
         for (auto token : tokens) {
             discord::Account account{ token };
             futures.push_back(std::async(std::launch::async, sendmessage, account, channelId, message));
-            std::this_thread::sleep_for(std::chrono::milliseconds(250));
+            std::this_thread::sleep_for(std::chrono::milliseconds(time_between_message));
         }
     }
 }

@@ -13,7 +13,7 @@ void console::print(T msg) {
     std::cout << msg;
 }
 
-void console::ParseCmds(std::string cmd) {
+void console::ParseCmds(std::string cmd, std::vector<std::string> tokens) {
 
     std::vector<std::string> args = alm::split(cmd, ' ');
     if (args.size() == 0) {

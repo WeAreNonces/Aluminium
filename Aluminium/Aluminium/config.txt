@@ -13,6 +13,8 @@ ping_everyone = false
 # We recommend keeping this at true, but if you have a lot of tokens and you're sure they're functional, you're welcome to keep this at false.
 verify_tokens = true
 
-# Aluminium uses multithreading to make the bot as fast as possible. Which is why we heavily recommend keeping this at true.
-# However if your computer resources are very bad, you can keep this at false.
-threading = true
+# This is the amount of time it waits between message (in milliseconds)
+# By default this is at `250`, but if you have a low amount of tokens we recommend making this higher.
+# If you have a lot of tokens (above 100) then we recommend making this lower.
+# If you notice the bot stops sending messages after a while then make this higher.
+time_between_message = 250
