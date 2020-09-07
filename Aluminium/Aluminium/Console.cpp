@@ -13,21 +13,37 @@
 */
 
 template<typename T>
-void console::print(T msg, bool warn) {
+void console::print(T msg) {
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    if (warn) {
-        SetConsoleTextAttribute(h, FOREGROUND_RED | FOREGROUND_GREEN);
-        std::cout << "[ ! ] ";
-        SetConsoleTextAttribute(h, 15);
-        std::cout << msg;
-    }
-    else {
-        SetConsoleTextAttribute(h, 4);
-        std::cout << "[ ALUMINUM ] ";
-        SetConsoleTextAttribute(h, 15);
-        std::cout << msg;
-    }
+    SetConsoleTextAttribute(h, 4);
+    std::cout << "[ ALUMINUM ] ";
+    SetConsoleTextAttribute(h, 15);
+    std::cout << msg;
 }
+
+void console::warn(std::string msg) {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(h, FOREGROUND_RED | FOREGROUND_GREEN);
+    std::cout << "[ ! ] ";
+    SetConsoleTextAttribute(h, 15);
+    std::cout << msg;
+};
+
+void console::success(std::string msg) {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(h, FOREGROUND_GREEN);
+    std::cout << "[ : ] ";
+    SetConsoleTextAttribute(h, 15);
+    std::cout << msg;
+};
+
+void console::error(std::string msg) {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(h, FOREGROUND_RED | FOREGROUND_INTENSITY);
+    std::cout << "[ FATAL ] ";
+    SetConsoleTextAttribute(h, 15);
+    std::cout << msg;
+};
 
 void console::ParseCmds(std::string cmd, std::vector<std::string> tokens) {
 
@@ -48,11 +64,12 @@ void console::ParseCmds(std::string cmd, std::vector<std::string> tokens) {
         leave [guildid] - Leaves a server
         spamfriendrequests/spamfrs [userid] - Sends a friend request to a user
         clear - Clears the console
+        version - Gets the current version of Aluminium
 )";
     }
 
     else if (args[0] == "join") {
-        if (args.size() == 2) {
+        if (args.size() >= 2) {
             console::print("Joining " + args[1] + '\n');
             alm::joinServer(args[1]);
         }
@@ -88,6 +105,9 @@ void console::ParseCmds(std::string cmd, std::vector<std::string> tokens) {
         system("start config.txt");
     else if (args[0] == "tokens")
         system("start tokens.txt");
+
+    else if (args[0] == "version")
+        console::print("1.0.3\n");
 
     else
         console::print("Unknown command '" + args[0] + "'\n");

@@ -34,6 +34,9 @@
     <ClCompile Include="Console.cpp">
       <Filter>Aluminium\Console</Filter>
     </ClCompile>
+    <ClCompile Include="setup.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aluminium.h">
@@ -50,6 +53,9 @@
     </ClInclude>
     <ClInclude Include="Console.h">
       <Filter>Aluminium\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="setup.h">
+      <Filter>Config</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

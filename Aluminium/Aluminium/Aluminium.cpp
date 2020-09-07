@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream> // for std::ifstream
 #include <Windows.h>
+#include<conio.h> // for _getch()
 #include <future>
 #include <cpr/cpr.h>
 
@@ -93,7 +94,19 @@ void alm::ServerRaid(uint64_t channelId, std::string message) {
     std::vector<std::future<void>> futures = {};
     config::Parser configuration = config::parse("config.txt");
     int time_between_message = std::get<int>(config::get(configuration, "time_between_message"));
-    while (true) {
+    bool isRaiding = true;
+    auto escape = std::async(std::launch::async, [&]() {
+        while (true) {
+            char key;
+            key = _getch();
+            if (key == 27) {
+                isRaiding = false;
+                console::print("Raid stopped\n");
+                break;
+            }
+        }
+    });
+    while (isRaiding) {
         for (auto token : tokens) {
             discord::Account account{ token };
             futures.push_back(std::async(std::launch::async, sendmessage, account, channelId, message));

@@ -1,6 +1,0 @@
-# This is a comment
-# This is another comment.
-
-# Above me is empty space
-
-testvalue = hi
